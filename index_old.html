@@ -7,25 +7,9 @@
     <link href="demos.css" rel="stylesheet" type="text/css">
     <link href="ot.min.css" media="screen" rel="stylesheet" type="text/css">
 
+    <script src="opentok.min.js"></script>
     <script charset="utf-8" type="text/javascript">
-    function loadScript(url, callback)
-    {
-        // Adding the script tag to the head as suggested before
-        var head = document.getElementsByTagName('head')[0];
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = url;
-
-        // Then bind the event to the callback function.
-        // There are several events for cross browser compatibility.
-        script.onreadystatechange = callback;
-        script.onload = callback;
-
-        // Fire the loading
-        head.appendChild(script);
-    }
-
-    var initializeOpenTok = function() {
+    function initializeOpenTok() {
       var API_KEY = 45050062;
       var Session_ID = "2_MX40NTA1MDA2Mn5-MTQxNDUzODI3MDQzN35tUnZXM3AyNUZmakFJR1h5Z3ZGUlg0SVV-fg"; // ROOM
       var API_TOKEN = "T1==cGFydG5lcl9pZD00NTA1MDA2MiZzaWc9MDAyMzM1ZWJmN2RmZTc4MTlhYzE3YTdkZWFkYjhhMDU5NDEyMDZkMzpyb2xlPW1vZGVyYXRvciZzZXNzaW9uX2lkPTJfTVg0ME5UQTFNREEyTW41LU1UUXhORFV6T0RJM01EUXpOMzV0VW5aWE0zQXlOVVptYWtGSlIxaDVaM1pHVWxnMFNWVi1mZyZjcmVhdGVfdGltZT0xNDE0NTQ0MDg4Jm5vbmNlPTAuMDk2MzQwODAzMzI0NDg1MTQmZXhwaXJlX3RpbWU9MTQxNzEzNjA1NA=="; // Room access
@@ -49,30 +33,8 @@
     var deviceReady = false;
 
 
-    function ready(evt) {
-      var oldLogger;
+    initializeOpenTok();
 
-      document.removeEventListener('deviceready', ready);
-
-      navigator.getUserMedia = getUserMedia;
-
-      /*
-      // pretend you are a Chrome Desktop UA
-      var userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2203.3 Safari/537.36";
-      Object.setProperty(navigator, 'userAgent', {enumerable: true, get: function(){return userAgent;}});
-      */
-
-      // overwrite location.protocol, because it runs on "file:" on the iOS device
-      //document.location.protocol = "http:";
-
-      console.log('iOS plugin initialized, getUserMedia available = ' + (!!navigator.getUserMedia));
-
-      loadScript("opentok.js", initializeOpenTok);
-
-    }
-
-    // wait for the device ready call
-    document.addEventListener('deviceready', ready);
     </script>
   </head>
 
